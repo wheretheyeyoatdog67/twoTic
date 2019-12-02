@@ -1,0 +1,1 @@
+[["map1.txt"], ["map2.txt"], ["maps/fuck.txt"], ["map1.txt"], ["map3.txt"], ["map1.txt"], ["map3.txt"], ["sean.txt"], ["\u001b[B\u001b[Bmaps.fuck.txt"], ["\u001b[A\u001b[Ax"]]
