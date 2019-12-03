@@ -1,5 +1,29 @@
+import pygame
+
+import random
+import os
+import math
+import json
+import entity
+
+
+screen_WIDTH = 800
+screen_HEIGHT = 700
+# screen_WIDTH = 800
+# screen_HEIGHT = 700
+sideBar = 100
+clockSpeed = 100
+blockWidth = int((screen_WIDTH-sideBar)/14) #blockWidth x blockWidth blocks
+blockHeight = screen_HEIGHT/14
+halfBlockWidth = blockWidth/2
+
+
+
+player1_images = [pygame.transform.scale(pygame.image.load(os.path.join("assets","imgs","bird" + str(x) + ".png")),(50,40)) for x in range(1,4)]
+
+
 class Entity:
-	#IMGS = player1_images
+	IMGS = player1_images
 	def __init__(self, x, y,dir):
 		self.x = x
 		self.y = y
@@ -20,8 +44,7 @@ class Entity:
 		self.dir = dir
 		self.still = True
 
-	def drawEntity(self):
-		global frame
+	def drawEntity(self,frame,screen,testSprite):
 		if self.still == True:
 			screen.blit((testSprite.images[self.dir*8+5]),(self.x-5,self.y-45))
 		else:
@@ -36,11 +59,11 @@ class Entity:
 		global img
 		self.img = pygame.transform.rotate(self.img, 90)
 
-	def update(self):
+	def update(self,frame,screen,testSprite):
 		if self.alive == True:
 			self.blockX = int(self.x/blockWidth + 1)
 			self.blockY = int(self.y/blockWidth + 1)
-			self.drawEntity()
+			self.drawEntity(frame,screen,testSprite)
 
 	def removeDeactiveProj(self):
 		#print((self.projectiles))
